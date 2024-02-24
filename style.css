@@ -6,7 +6,7 @@
 
 :root {
   --text-color: white;
-  --bg-url: url(./assets/background.jpg);
+  --bg-url: url(./assets/background\ desktop\ dark.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -16,7 +16,7 @@
 
 .light {
   --text-color: black;
-  --bg-url: url(./assets/background\ claro.jpg);
+  --bg-url: url(./assets/background\ desktop\ light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -34,6 +34,7 @@ body {
 
   /*background: color image repeat position*/
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -85,10 +86,16 @@ body * {
   top: 50%;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
+
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards; 
+}
+
+#swich button:hover {
+outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -163,4 +170,35 @@ ul li a:hover {
 #social-links a:hover {
   background: var(--highlight-color);
   transition: background 0.2s;
+}
+
+/* media queries*/
+@media (min-width: 700px) {
+:root {
+  --bg-url: url(./assets/background\ desktop\ dark.jpg);
+}
+
+.light {
+  --bg-url: url(./assets/background\ desktop\ light.jpg);
+}
+}
+
+/*animation*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left:50%;
+  }
+}
+
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left:0;
+  }
 }
